@@ -93,6 +93,10 @@ project/assembly_name="Getting started with Godot 4"
 
 enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
 
+[global_group]
+
+Player=""
+
 [input]
 
 move_left={
@@ -122,7 +126,11 @@ move_down={
 
 [layer_names]
 
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
 3d_physics/layer_2="player"
+2d_physics/layer_3="Mobs"
+2d_physics/layer_4="MobsAreaDetection"
 
 [rendering]
 

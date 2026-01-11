@@ -1,3 +1,4 @@
+res://characters/mobs.tscn
+res://characters/mobs.gd
 res://characters/player.tscn
 res://game.tscn
-res://trees/pine_tree.tscn
