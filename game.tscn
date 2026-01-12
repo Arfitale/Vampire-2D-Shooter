@@ -7,10 +7,12 @@
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_right = 1913.0
 offset_bottom = 1068.0
-color = Color(0.76240367, 0.76240367, 0.76240367, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(682, 207)
