@@ -32,6 +32,10 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		queue_free()
+		var smoke_scene := preload("res://smoke_explosion/smoke_explosion.tscn")
+		var smoke := smoke_scene.instantiate()
+		smoke.global_position = global_position 
+		get_parent().add_child(smoke)
 		return
 		
 	$Slime.play_hurt()

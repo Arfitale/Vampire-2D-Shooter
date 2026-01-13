@@ -24,4 +24,4 @@ position = Vector2(104, 0)
 texture = ExtResource("1_kmld4")
 
 [node name="BulletSpawn" type="Marker2D" parent="WeaponPivot/Pistol"]
-position = Vector2(25, -10)
+position = Vector2(48, -10)
