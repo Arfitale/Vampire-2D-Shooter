@@ -1,8 +1,5 @@
-res://characters/mobs.tscn
-res://pistol/gun.tscn
-res://pistol/gun.gd
 res://characters/player.tscn
 res://characters/player.gd
-res://characters/mobs.gd
-res://characters/slime/slime.tscn
-res://characters/slime/slime.gd
+res://characters/mobs.tscn
+res://characters/flash.gdshader
+res://characters/happy_boo/happy_boo.tscn

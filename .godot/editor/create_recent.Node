@@ -1,6 +1,7 @@
+Area2D
+AnimationPlayer
 CollisionShape2D
 CollisionPolygon2D
-Area2D
 Marker2D
 Camera2D
 CanvasLayer

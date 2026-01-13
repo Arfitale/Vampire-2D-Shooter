@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5ox08yiwsfuw"]
+[gd_scene load_steps=8 format=3 uid="uid://c5ox08yiwsfuw"]
 
 [ext_resource type="Script" uid="uid://bf5xowve6qpdv" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_dnjla"]
@@ -6,6 +6,43 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
 radius = 26.0
+
+[sub_resource type="Animation" id="Animation_tory2"]
+resource_name = "hurt"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HappyBoo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_x0jl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HappyBoo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evndh"]
+_data = {
+&"RESET": SubResource("Animation_x0jl3"),
+&"hurt": SubResource("Animation_tory2")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -20,7 +57,13 @@ shape = SubResource("CircleShape2D_3eadt")
 zoom = Vector2(0.6, 0.6)
 
 [node name="Gun" parent="." instance=ExtResource("3_tory2")]
+visible = false
 position = Vector2(1.15484e-07, -30.999998)
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_evndh")
+}
 
 [connection signal="body_entered" from="Gun" to="Gun" method="_on_body_entered"]
 [connection signal="body_exited" from="Gun" to="Gun" method="_on_body_exited"]
