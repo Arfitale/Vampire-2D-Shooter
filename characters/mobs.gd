@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var player: Node2D
-
 @export var movement_speed := 400.0
 @export var health := 5
 

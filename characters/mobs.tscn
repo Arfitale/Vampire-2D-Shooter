@@ -7,7 +7,7 @@
 radius = 28.442924
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bps13"]
-radius = 823.0298
+radius = 987.18286
 
 [node name="Mobs" type="CharacterBody2D" groups=["Mobs"]]
 collision_layer = 4

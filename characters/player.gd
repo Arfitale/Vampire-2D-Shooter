@@ -4,8 +4,6 @@ extends CharacterBody2D
 @onready var sprite := $HappyBoo
 @onready var gun := $Gun
 
-var shoot
-
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and gun.fire_cooldown <= 0.0:
 		_handle_shoot()
