@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5ox08yiwsfuw"]
+[gd_scene load_steps=9 format=3 uid="uid://c5ox08yiwsfuw"]
 
 [ext_resource type="Script" uid="uid://bf5xowve6qpdv" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_dnjla"]
@@ -44,6 +44,10 @@ _data = {
 &"hurt": SubResource("Animation_tory2")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
+radius = 21.0
+height = 88.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_3eadt")
@@ -57,7 +61,6 @@ shape = SubResource("CircleShape2D_3eadt")
 zoom = Vector2(0.6, 0.6)
 
 [node name="Gun" parent="." instance=ExtResource("3_tory2")]
-visible = false
 position = Vector2(1.15484e-07, -30.999998)
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -65,5 +68,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_evndh")
 }
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-2, -46)
+shape = SubResource("CapsuleShape2D_tory2")
+
 [connection signal="body_entered" from="Gun" to="Gun" method="_on_body_entered"]
 [connection signal="body_exited" from="Gun" to="Gun" method="_on_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]

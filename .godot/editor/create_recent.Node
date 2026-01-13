@@ -1,6 +1,6 @@
+CollisionShape2D
 Area2D
 AnimationPlayer
-CollisionShape2D
 CollisionPolygon2D
 Marker2D
 Camera2D

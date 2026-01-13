@@ -3,3 +3,4 @@ res://characters/player.gd
 res://characters/mobs.tscn
 res://characters/flash.gdshader
 res://characters/happy_boo/happy_boo.tscn
+res://game.tscn
