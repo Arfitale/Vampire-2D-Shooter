@@ -4,6 +4,9 @@ var player: Node2D
 @export var movement_speed := 400.0
 @export var health := 5
 
+func _ready() -> void:
+	$Slime.play_idle()
+
 func _physics_process(delta: float) -> void:
 	if player:
 		_chase_player()
@@ -19,11 +22,20 @@ func _chase_player() -> void:
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player = body
+		$Slime.play_walk()
 
 func _on_player_detection_body_exited(body: Node2D) -> void:
 	player = null
+	$Slime.play_idle()
 
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		queue_free()
+		return
+		
+	$Slime.play_hurt()
+	if player:
+		$Slime/AnimationPlayer.queue("walk")
+	else:
+		$Slime/AnimationPlayer.queue("idle")

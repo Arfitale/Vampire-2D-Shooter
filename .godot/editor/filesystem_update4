@@ -4,3 +4,5 @@ res://pistol/gun.gd
 res://characters/player.tscn
 res://characters/player.gd
 res://characters/mobs.gd
+res://characters/slime/slime.tscn
+res://characters/slime/slime.gd

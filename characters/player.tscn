@@ -21,7 +21,6 @@ zoom = Vector2(0.6, 0.6)
 
 [node name="Gun" parent="." instance=ExtResource("3_tory2")]
 position = Vector2(1.15484e-07, -30.999998)
-auto_aim = true
 
 [connection signal="body_entered" from="Gun" to="Gun" method="_on_body_entered"]
 [connection signal="body_exited" from="Gun" to="Gun" method="_on_body_exited"]
