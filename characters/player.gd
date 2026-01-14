@@ -1,12 +1,21 @@
 extends CharacterBody2D
 
+signal health_depleted
+
 @export var movement_speed := 600.0
-@export var health := 10
+@export var max_health := 10.0
+var health: float
 
 @onready var sprite := $HappyBoo
 @onready var gun := $Gun
+@onready var healthbar := %Healthbar
 
 var overlapping_enemies: Array[Node2D] = []
+
+func _ready() -> void:
+	health = max_health
+	healthbar.max_value = max_health
+	healthbar.value = health
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and gun.fire_cooldown <= 0.0:
@@ -31,8 +40,9 @@ func _handle_shoot() -> void:
 
 func take_damage(damage: int) -> void:
 	health -= damage
+	healthbar.value = health
 	if health <= 0:
-		queue_free() 
+		health_depleted.emit()
 	
 	$EffectAnimationPlayer.play("hurt")
 
@@ -43,3 +53,11 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 func _on_hurtbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Mobs"):
 		overlapping_enemies.pop_front()
+
+func _on_health_depleted() -> void:
+	queue_free()
+	var smoke_scene := preload("res://smoke_explosion/smoke_explosion.tscn")
+	var smoke := smoke_scene.instantiate()
+	smoke.global_position = global_position 
+	get_parent().add_child(smoke)
+	return
