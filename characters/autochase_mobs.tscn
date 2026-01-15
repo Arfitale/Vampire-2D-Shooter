@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn25l87nioveb"]
+
+[ext_resource type="Script" uid="uid://bt4q00jj5b14f" path="res://characters/autochase_mobs.gd" id="1_j6vxt"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_80y3b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hyx61"]
+radius = 28.442924
+
+[node name="Mobs" type="CharacterBody2D" groups=["Mobs"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_j6vxt")
+
+[node name="Slime" parent="." instance=ExtResource("2_80y3b")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_hyx61")
+
+[connection signal="player_died" from="." to="." method="_on_player_died"]
