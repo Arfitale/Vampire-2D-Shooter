@@ -1,6 +1,4 @@
-res://characters/autochase_mobs.tscn
-res://characters/autochase_mobs.gd
-res://characters/mobs.tscn
-res://game.gd
 res://game.tscn
-res://characters/slime/slime.tscn
+res://game.gd
+res://game_over.gd
+res://game_over.tscn

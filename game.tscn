@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3u84076due2"]
+[gd_scene load_steps=7 format=3 uid="uid://b3u84076due2"]
 
 [ext_resource type="PackedScene" uid="uid://c5ox08yiwsfuw" path="res://characters/player.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://dususlr2yr63q" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ce11bxhiyk7y8" path="res://trees/pine_tree.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://bhl0sa1l6j18k" path="res://characters/mobs.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://cwuwf3ya0bg7e" path="res://game_over.tscn" id="5_7jktm"]
 
 [sub_resource type="Curve2D" id="Curve2D_fc0e3"]
 _data = {
@@ -21,6 +22,11 @@ layer = -30
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_right = 2017.0
 offset_bottom = 1152.0
+
+[node name="GameOver" parent="." instance=ExtResource("5_7jktm")]
+unique_name_in_owner = true
+visible = false
+follow_viewport_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(682, 207)
@@ -94,5 +100,7 @@ position = Vector2(977, -270)
 unique_name_in_owner = true
 autostart = true
 
+[connection signal="player_died" from="." to="." method="_on_player_died"]
+[connection signal="try_again" from="GameOver" to="." method="_on_game_over_try_again"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

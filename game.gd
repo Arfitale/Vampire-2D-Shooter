@@ -4,6 +4,7 @@ signal player_died
 
 @onready var spawn_timer := %SpawnTimer
 @onready var spawn_path := %SpawnPath
+@onready var game_over := %GameOver
 
 func _spawn_mobs() -> void:
 	var new_mobs: Node2D = preload("res://characters/autochase_mobs.tscn").instantiate()
@@ -18,4 +19,10 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_player_health_depleted() -> void:
 	player_died.emit()
+
+func _on_player_died() -> void:
 	spawn_timer.stop()
+	game_over.visible = true
+
+func _on_game_over_try_again() -> void:
+	get_tree().reload_current_scene()

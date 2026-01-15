@@ -1,3 +1,8 @@
+VBoxContainer
+Button
+Label
+ColorRect
+CanvasLayer
 Timer
 PathFollow2D
 Path2D
@@ -8,7 +13,3 @@ AnimationPlayer
 CollisionPolygon2D
 Marker2D
 Camera2D
-CanvasLayer
-CharacterBody2D
-ColorRect
-StaticBody2D
