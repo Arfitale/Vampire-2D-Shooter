@@ -1,4 +1,2 @@
-res://game.tscn
-res://game.gd
-res://game_over.gd
-res://game_over.tscn
+res://pistol/hotspot.tscn
+res://pistol/laser_raycast.gd

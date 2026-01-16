@@ -7,8 +7,8 @@ signal health_depleted
 var health: float
 
 @onready var sprite := $HappyBoo
-@onready var gun := $Gun
 @onready var healthbar := %Healthbar
+@onready var weapon := %WeaponSlot
 
 var overlapping_enemies: Array[Node2D] = []
 
@@ -18,8 +18,11 @@ func _ready() -> void:
 	healthbar.value = health
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("shoot") and gun.fire_cooldown <= 0.0:
+	if Input.is_action_pressed("shoot"):
 		_handle_shoot()
+	
+	if Input.is_action_just_released("shoot"):
+		_stop_shoot()
 
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -36,7 +39,10 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _handle_shoot() -> void:
-	gun.shoot()
+	weapon.shoot.emit()
+
+func _stop_shoot() -> void:
+	weapon.stop_shoot.emit()
 
 func take_damage(damage: int) -> void:
 	health -= damage

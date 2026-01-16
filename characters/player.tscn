@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5ox08yiwsfuw"]
+[gd_scene load_steps=13 format=3 uid="uid://c5ox08yiwsfuw"]
 
 [ext_resource type="Script" uid="uid://bf5xowve6qpdv" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_dnjla"]
-[ext_resource type="PackedScene" uid="uid://dl8tiw1bpd1nt" path="res://pistol/gun.tscn" id="3_tory2"]
+[ext_resource type="PackedScene" uid="uid://kc5b0ugt4nvp" path="res://pistol/weapon_slot.tscn" id="4_evndh"]
 [ext_resource type="Script" uid="uid://dtljgx2nn8q4g" path="res://characters/healthbar.gd" id="4_x0jl3"]
+[ext_resource type="PackedScene" uid="uid://bf0uuxafog4ce" path="res://pistol/hotspot.tscn" id="5_evndh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
 radius = 26.0
@@ -75,9 +76,6 @@ shape = SubResource("CircleShape2D_3eadt")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 
-[node name="Gun" parent="." instance=ExtResource("3_tory2")]
-position = Vector2(1.15484e-07, -30.999998)
-
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_evndh")
@@ -103,9 +101,11 @@ value = 100.0
 show_percentage = false
 script = ExtResource("4_x0jl3")
 
+[node name="WeaponSlot" parent="." instance=ExtResource("4_evndh")]
+unique_name_in_owner = true
+selected_weapon = ExtResource("5_evndh")
+
 [connection signal="health_depleted" from="." to="." method="_on_health_depleted"]
-[connection signal="body_entered" from="Gun" to="Gun" method="_on_body_entered"]
-[connection signal="body_exited" from="Gun" to="Gun" method="_on_body_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="low_health" from="Healthbar" to="Healthbar" method="_on_low_health"]

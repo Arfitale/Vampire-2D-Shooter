@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8tiw1bpd1nt"]
+[gd_scene load_steps=4 format=3 uid="uid://dl8tiw1bpd1nt"]
 
 [ext_resource type="Script" uid="uid://2qjgma65pcsu" path="res://pistol/gun.gd" id="1_b7uwb"]
 [ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_kmld4"]
-[ext_resource type="PackedScene" uid="uid://bmo0auqbfad2o" path="res://pistol/bullet.tscn" id="2_donny"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7uwb"]
 radius = 1061.2714
@@ -11,7 +10,6 @@ radius = 1061.2714
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_b7uwb")
-bullet_scene = ExtResource("2_donny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b7uwb")

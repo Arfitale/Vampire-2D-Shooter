@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf0uuxafog4ce"]
+
+[ext_resource type="Script" uid="uid://4h2erpwnabyq" path="res://pistol/hotspot.gd" id="1_4erth"]
+[ext_resource type="Texture2D" uid="uid://ceyjoy2kgni1f" path="res://assets/hotspot.png" id="3_4erth"]
+[ext_resource type="Script" uid="uid://caqrdghy0h0rf" path="res://pistol/laser_raycast.gd" id="3_74nmc"]
+
+[sub_resource type="Gradient" id="Gradient_4erth"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.16666667)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_74nmc"]
+gradient = SubResource("Gradient_4erth")
+
+[sub_resource type="Gradient" id="Gradient_74nmc"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n40wk"]
+gradient = SubResource("Gradient_74nmc")
+
+[sub_resource type="Curve" id="Curve_4erth"]
+_data = [Vector2(0.08333331, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_74nmc"]
+curve = SubResource("Curve_4erth")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n40wk"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 20.869999
+scale_curve = SubResource("CurveTexture_74nmc")
+color_ramp = SubResource("GradientTexture1D_n40wk")
+turbulence_enabled = true
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 0.0
+
+[node name="Hotspot" type="Node2D"]
+script = ExtResource("1_4erth")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+position = Vector2(0, -31)
+
+[node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
+position = Vector2(101, 5.999998)
+scale = Vector2(0.46323535, 0.4016394)
+texture = ExtResource("3_4erth")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(160, -37)
+target_position = Vector2(0, 0)
+collision_mask = 5
+script = ExtResource("3_74nmc")
+cast_range = 1000.0
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+points = PackedVector2Array(0, 0, 0, 0)
+texture = SubResource("GradientTexture1D_74nmc")
+texture_mode = 2
+
+[node name="EmitParticles" type="GPUParticles2D" parent="RayCast2D/Line2D"]
+unique_name_in_owner = true
+position = Vector2(9, 0)
+emitting = false
+amount = 200
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_n40wk")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="RayCast2D/Line2D"]
+unique_name_in_owner = true
+position = Vector2(9, 0)
+emitting = false
+amount = 200
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_n40wk")

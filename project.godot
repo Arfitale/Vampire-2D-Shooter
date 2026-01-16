@@ -77,6 +77,10 @@ Settings/Show_Tooltips=true
 config/name="Your First 2D Game With Godot 4: START (GDQuest)"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://i4cjdwy1kcoj"
 config/icon="res://icon.png"
 
 [display]

@@ -98,7 +98,6 @@ position = Vector2(977, -270)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-autostart = true
 
 [connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="try_again" from="GameOver" to="." method="_on_game_over_try_again"]
