@@ -143,7 +143,3 @@ shoot={
 2d_physics/layer_4="MobsAreaDetection"
 2d_physics/layer_5="PlayerHitbox"
 2d_physics/layer_6="PlayerHurtbox"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"

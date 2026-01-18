@@ -1,2 +1,1 @@
-res://pistol/hotspot.tscn
-res://pistol/laser_raycast.gd
+res://weapon/hotspot.tscn

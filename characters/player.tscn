@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bf5xowve6qpdv" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_dnjla"]
-[ext_resource type="PackedScene" uid="uid://kc5b0ugt4nvp" path="res://pistol/weapon_slot.tscn" id="4_evndh"]
+[ext_resource type="PackedScene" uid="uid://kc5b0ugt4nvp" path="res://weapon/weapon_slot.tscn" id="4_evndh"]
 [ext_resource type="Script" uid="uid://dtljgx2nn8q4g" path="res://characters/healthbar.gd" id="4_x0jl3"]
-[ext_resource type="PackedScene" uid="uid://bf0uuxafog4ce" path="res://pistol/hotspot.tscn" id="5_evndh"]
+[ext_resource type="PackedScene" uid="uid://bf0uuxafog4ce" path="res://weapon/hotspot.tscn" id="5_evndh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
 radius = 26.0
